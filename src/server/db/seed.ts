@@ -1,6 +1,7 @@
 // Not sure whether this is the right way to initialize the database
 
-import { db } from ".";
+import type { InferSelectModel } from "drizzle-orm";
+import { db } from "./";
 import { pokemons } from "./schema";
 
 const pokemonIds: number[] = [];
@@ -33,12 +34,14 @@ async function get_og_pokemon_data(pokemonId: number) {
       imageUrl: sprites.front_shiny,
     };
   } catch (err) {
-    console.log(
+    console.error(
       `error happened when getting pokemon ${pokemonId}'s data from pokemon API`,
       err,
     );
   }
 }
+
+type TPokemon = InferSelectModel<typeof pokemons>;
 
 async function main() {
   const formattedData = await Promise.all(
@@ -46,7 +49,8 @@ async function main() {
   );
   // console.log(formattedData);
 
-  // This doesn't work to prevent typescript from thinking formattedData might be undefined
+  // This doesn't work to prevent typescript from thinking formattedData might be undefined,
+  // so had to cast types instead
   // if (formattedData.some((data) => data === undefined)) {
   //   throw new Error("No formatted data");
   // }
@@ -54,7 +58,8 @@ async function main() {
   // npx tsx ./src/server/db/seed.ts is the command to run the script.
   // tsx makes ts runable in node, but fails to load environment variables. Since this is only running once,
   // could use the string directly. The enviroment variable works for t3, but not for cases like running scripts
-  await db.insert(pokemons).values(formattedData);
+  // I guess it's because the project looks through the entire app, while tsx only goes through 1 file
+  await db.insert(pokemons).values(formattedData as TPokemon[]);
 }
 
 main().catch((err) => {
