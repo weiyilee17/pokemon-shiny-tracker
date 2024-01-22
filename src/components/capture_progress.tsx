@@ -1,8 +1,18 @@
 import { api } from "~/utils/api";
+
+import { LoadingSpinner } from "./loading";
 import { Progress } from "./ui/progress";
 
 function CaptureProgress() {
-  const { data } = api.pokemon.getCapturedCount.useQuery();
+  const { data, isLoading } = api.pokemon.getCapturedCount.useQuery();
+
+  if (isLoading) {
+    return (
+      <div className="text-center">
+        <LoadingSpinner />;
+      </div>
+    );
+  }
 
   if (data === undefined) {
     return (
