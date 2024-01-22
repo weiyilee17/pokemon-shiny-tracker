@@ -43,6 +43,7 @@ function GridWithFilter() {
       <div className="flex w-full flex-col gap-4 sm:w-2/5">
         <CaptureProgress />
         <Input
+          className="my-8"
           placeholder="Find a pokemon using name or id"
           value={filterString}
           onChange={handleFilterStringChange}

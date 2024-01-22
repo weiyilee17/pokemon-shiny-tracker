@@ -1,6 +1,7 @@
-import { signIn, signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import PageLayout from "~/components/layout";
 import { LoadingSpinner } from "~/components/loading";
+import NavBar from "~/components/nav_bar";
 import GridWithFilter from "~/components/pokemon_grid_with_filter";
 
 export default function Home() {
@@ -15,15 +16,7 @@ export default function Home() {
 
   return (
     <PageLayout>
-      <p className="text-center text-2xl text-white">
-        {sessionData && <span>Logged in as {sessionData.user?.name}</span>}
-      </p>
-      <button
-        className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
-        onClick={sessionData ? () => void signOut() : () => void signIn()}
-      >
-        {sessionData ? "Sign out" : "Sign in"}
-      </button>
+      <NavBar />
 
       {sessionData ? (
         <GridWithFilter />
