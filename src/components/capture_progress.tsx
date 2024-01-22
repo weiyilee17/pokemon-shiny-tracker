@@ -9,7 +9,7 @@ function CaptureProgress() {
   if (isLoading) {
     return (
       <div className="text-center">
-        <LoadingSpinner />;
+        <LoadingSpinner />
       </div>
     );
   }
