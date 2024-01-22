@@ -42,13 +42,14 @@ function PokemonCard({ id, name, imageUrl, captured }: TPokemon) {
 
         <div className="mt-2 flex items-center justify-center space-x-2">
           <Checkbox
-            id="captured"
+            id={`${name}-captured`}
             defaultChecked={captured}
             onCheckedChange={handlePokemonCaptured}
             disabled={isLoading}
           />
 
-          <Label htmlFor="captured">Captured</Label>
+          {/* id has to be unique for label to work. Since this is mapped, id or name is required to make htmlFor work. */}
+          <Label htmlFor={`${name}-captured`}>Captured</Label>
         </div>
       </CardContent>
     </Card>
