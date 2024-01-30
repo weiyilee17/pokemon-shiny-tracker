@@ -21,3 +21,9 @@ export const LoadingSpinner = ({ size }: { size?: number }) => (
     <span className="sr-only">Loading...</span>
   </div>
 );
+
+export const LoadingPage = () => (
+  <div className="absolute right-0 top-0 flex h-screen w-screen items-center justify-center">
+    <LoadingSpinner size={60} />
+  </div>
+);

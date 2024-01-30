@@ -2,6 +2,7 @@ import "~/styles/globals.css";
 
 import { SessionProvider } from "next-auth/react";
 import Head from "next/head";
+import { ThemeProvider } from "~/components/theme-provider";
 import { api } from "~/utils/api";
 
 import type { Session } from "next-auth";
@@ -21,7 +22,14 @@ const MyApp: AppType<{ session: Session | null }> = ({
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Component {...pageProps} />
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      >
+        <Component {...pageProps} />
+      </ThemeProvider>
     </SessionProvider>
   );
 };

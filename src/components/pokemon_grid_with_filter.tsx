@@ -6,7 +6,7 @@ import PokemonCardGrid from "~/components/pokemon_card_grid";
 import { Input } from "~/components/ui/input";
 import { api } from "~/utils/api";
 
-import { LoadingSpinner } from "./loading";
+import { LoadingPage } from "./loading";
 
 import type { ChangeEvent } from "react";
 
@@ -16,7 +16,7 @@ function GridWithFilter() {
   const [filterString, setFilterString] = useState("");
 
   if (isLoading) {
-    return <LoadingSpinner size={60} />;
+    return <LoadingPage />;
   }
 
   if (pokemons === undefined) {

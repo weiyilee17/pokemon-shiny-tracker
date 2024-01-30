@@ -1,6 +1,6 @@
 import { useSession } from "next-auth/react";
 import PageLayout from "~/components/layout";
-import { LoadingSpinner } from "~/components/loading";
+import { LoadingPage } from "~/components/loading";
 import NavBar from "~/components/nav_bar";
 import GridWithFilter from "~/components/pokemon_grid_with_filter";
 
@@ -11,7 +11,7 @@ export default function Home() {
   // see your personal record" would be showed. In cases when user is already logged in, this would cause a flicker
   // when refreshing the page.
   if (status === "loading") {
-    return <LoadingSpinner />;
+    return <LoadingPage />;
   }
 
   return (
