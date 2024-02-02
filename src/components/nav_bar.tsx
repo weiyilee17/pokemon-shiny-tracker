@@ -12,11 +12,11 @@ function NavBar() {
       {sessionData?.user && (
         <Avatar>
           <AvatarImage
-            src={sessionData?.user.image ?? "user"}
-            alt={`Avatar for ${sessionData?.user.name ?? "user"}`}
+            src={sessionData?.user?.image ?? "user"}
+            alt={`Avatar for ${sessionData?.user?.name ?? "user"}`}
           />
           <AvatarFallback>
-            {`Avatar for ${sessionData?.user.name ?? "?"}`}
+            {`Avatar for ${sessionData?.user?.name ?? "?"}`}
           </AvatarFallback>
         </Avatar>
       )}
