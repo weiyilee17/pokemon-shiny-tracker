@@ -46,6 +46,7 @@ function PokemonCard({ id, name, imageUrl, captured }: TPokemon) {
             defaultChecked={captured}
             onCheckedChange={handlePokemonCaptured}
             disabled={isLoading}
+            aria-label={`${name}-captured`}
           />
 
           {/* id has to be unique for label to work. Since this is mapped, id or name is required to make htmlFor work. */}

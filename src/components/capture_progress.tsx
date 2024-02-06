@@ -25,6 +25,7 @@ function CaptureProgress() {
   return (
     <>
       <Progress
+        aria-label="capture-progress-bar-in-percentage"
         // getValueLabel and max doesn't seem to work, so had to do it this way
         value={(data * 100) / 153}
       />
