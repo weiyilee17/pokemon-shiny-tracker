@@ -35,7 +35,8 @@ function PokemonCard({ id, name, imageUrl, captured }: TPokemon) {
           alt={`Image of ${name}.`}
           width={100}
           height={100}
-          priority
+          // 4 rows are shown in full screen in initial load
+          priority={id <= 24}
         />
 
         <p className="text-center">{capitalizeString(name)}</p>
