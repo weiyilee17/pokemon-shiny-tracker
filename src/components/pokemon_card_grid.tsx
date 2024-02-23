@@ -5,7 +5,7 @@ type TPokemonsWithCaptured = RouterOutputs["pokemon"]["getAll"];
 
 function PokemonCardGrid({ pokemons }: { pokemons: TPokemonsWithCaptured }) {
   return (
-    <div className="container grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+    <div className="grid grid-cols-1 gap-4 md:grid-cols-3 xl:grid-cols-6">
       {pokemons.map((singlePokemon) => (
         <PokemonCard {...singlePokemon} key={singlePokemon.id} />
       ))}

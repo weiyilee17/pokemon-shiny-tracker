@@ -40,7 +40,7 @@ function GridWithFilter() {
 
   return (
     <>
-      <div className="flex w-full flex-col gap-4 sm:w-2/5">
+      <div className="flex w-3/5 flex-col items-center sm:w-2/5">
         <CaptureProgress />
         <Input
           className="my-8"
