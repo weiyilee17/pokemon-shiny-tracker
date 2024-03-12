@@ -59,6 +59,8 @@ async function main() {
   // tsx makes ts runable in node, but fails to load environment variables. Since this is only running once,
   // could use the string directly. The enviroment variable works for t3, but not for cases like running scripts
   // I guess it's because the project looks through the entire app, while tsx only goes through 1 file
+
+  // Not sure why on pg this doesn't finish and had to manually stop, the values where inserted into the db
   await db.insert(pokemons).values(formattedData as TPokemon[]);
 }
 

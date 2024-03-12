@@ -5,7 +5,7 @@ import GithubProvider from "next-auth/providers/github";
 
 import { env } from "~/env";
 import { db } from "~/server/db";
-import { mysqlTable } from "~/server/db/schema";
+import { createTable } from "~/server/db/schema";
 
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 
@@ -49,7 +49,7 @@ export const authOptions: NextAuthOptions = {
   // This is a next auth bug: https://github.com/nextauthjs/next-auth/issues/9493. Should be fixed by
   // simply upgrading dependencies and removing the additional cast.
 
-  adapter: DrizzleAdapter(db, mysqlTable) as Adapter,
+  adapter: DrizzleAdapter(db, createTable) as Adapter,
   providers: [
     GithubProvider({
       clientId: env.GITHUB_CLIENT_ID,
