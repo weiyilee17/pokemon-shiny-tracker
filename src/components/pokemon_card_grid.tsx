@@ -29,7 +29,9 @@ const gridComponents = {
     <div
       {...props}
       style={{
-        margin: "0.5rem",
+        // According to docs: https://virtuoso.dev/troubleshooting/#list-does-not-scroll-to-the-bottom--items-jump-around
+        // margins are hard to detect, and thus causing quirk effect when user scrolls to the bottom
+        // margin: "0.5rem",
         display: "flex",
         flex: "none",
         alignContent: "stretch",
