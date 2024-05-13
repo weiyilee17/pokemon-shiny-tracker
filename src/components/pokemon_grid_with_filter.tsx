@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import CaptureProgress from "~/components/capture_progress";
 import PokemonCardGrid from "~/components/pokemon_card_grid";
 import { Input } from "~/components/ui/input";
@@ -15,6 +15,11 @@ function GridWithFilter() {
 
   const [filterString, setFilterString] = useState("");
 
+  // Since the grid is virtualized, this only causes slight performance improvement (82 -> 77 ms, 59 -> 52 ms)
+  // If performance is really an concern, should perhaps use debounce.
+  // This is more of getting the taste of useTransition.
+  const [, startTransition] = useTransition();
+
   if (isLoading) {
     return <LoadingPage />;
   }
@@ -24,7 +29,9 @@ function GridWithFilter() {
   }
 
   const handleFilterStringChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setFilterString(e.target.value);
+    startTransition(() => {
+      setFilterString(e.target.value);
+    });
   };
 
   const filteredPokemons = pokemons.filter((singlePokemon) => {
