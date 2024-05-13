@@ -70,7 +70,7 @@ function PokemonCardGrid({ pokemons }: { pokemons: TPokemonsWithCaptured }) {
     <>
       <VirtuosoGrid
         // TODO: virtualization tends to use absolute positioning, See if the class can be dynamic
-        className="!h-[667px] !w-[350px] sm:!w-[640px] md:!h-[900px] md:!w-[768px] xl:!w-[1280px]"
+        className="!h-[667px] !w-[350px] sm:!w-[640px] md:!w-[768px] xl:!w-[1440px]"
         data={pokemons}
         components={gridComponents}
         itemContent={getItemCountent}

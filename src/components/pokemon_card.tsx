@@ -27,7 +27,7 @@ function PokemonCard({ id, name, imageUrl, captured }: TPokemon) {
   };
 
   return (
-    <Card className="px-8 py-4">
+    <Card className="mx-4 my-2 px-4 py-2">
       <CardContent>
         <Image
           className="mx-auto"
