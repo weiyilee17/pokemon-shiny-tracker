@@ -16,7 +16,7 @@ function capitalizeString(str: string) {
 function PokemonCard({ id, name, imageUrl, captured }: TPokemon) {
   const utils = api.useUtils();
 
-  const { mutate, isLoading } = api.pokemon.toggleCapturedById.useMutation({
+  const { mutate, isPending } = api.pokemon.toggleCapturedById.useMutation({
     onSuccess: () => {
       void utils.pokemon.getCapturedCount.invalidate();
     },
@@ -46,7 +46,7 @@ function PokemonCard({ id, name, imageUrl, captured }: TPokemon) {
             id={`${name}-captured`}
             defaultChecked={captured}
             onCheckedChange={handlePokemonCaptured}
-            disabled={isLoading}
+            disabled={isPending}
             aria-label={`${name}-captured`}
           />
 
